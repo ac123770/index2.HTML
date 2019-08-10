@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<title>Title</title>
+<style>
+h1:hover {Color: Blue}
+h2:hover {Color: Green}
+p:hover {Color: Red}
+h1, h2 {text-align: center;}
+p {text-align: center;
+Display: inline;}
+body { text-align: center; }
+</style></head>
+
+<body><h1> Pixel Art Maker!</h1>
+<h2> Choose Grid Size: </h2>
+<form id="size Picker">
+<p>Grid Height</p>
+<input type="number" id="input Width" name="width" min="1" value="1">
+<p>Grid Width </p>
+<input type="number" id="input Width" name="width" min="1" value="1">
+<button type="button" onclick="pixels.make Grid()">Submit</button></form>
+<h2>Pick a Color:</h2>
+<input type="color" id="color Picker">
+<table id="pixel Canvas"></table>
+<h2>Design Canvas</h2>
+  <script>class PixelArt {
+    constructor() {
+        this.color = document.getElementById('colorPicker');
+    }
+    makeGrid() {
+        this.deleteGrid();
+        let width = document.getElementById('inputHeight').value;
+        let height = document.getElementById('inputWidth').value;
+    
+        for (let row = 0; row < width; row++) {
+            var x = document.getElementById('pixelCanvas').insertRow(row);
+            for (let column = 0; column < height; column++) {
+                var z = x.insertCell(column);
+                z.addEventListener("click", function () {
+                    this.setAttribute("style", `background-color: ${pixels.color.value}`)
+                })
+            };
+        };
+        var table = document.getElementById("pixelCanvas");
+        table.deleteRow(-1)
+    };
+
+    deleteGrid() {
+        var table = document.getElementById("pixelCanvas");
+        for(var i = table.rows.length - 1; i > 0; i--)
+        {
+            table.deleteRow(i);
+        }
+    }
+    
+}
+let pixels = new PixelArt();
+  </script>
